@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+broadcast/
+cache/
+out/
+lib/
+README.md
+docs/
+report/
+results-*.txt
