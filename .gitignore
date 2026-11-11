@@ -5,7 +5,6 @@ broadcast/
 cache/
 out/
 lib/
-README.md
 docs/
 report/
 results-*.txt
