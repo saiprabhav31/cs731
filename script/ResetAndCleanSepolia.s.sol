@@ -21,7 +21,10 @@ contract ResetAndCleanSepolia is SepoliaScriptBase {
             keccak256(delegationCode) == keccak256(abi.encodePacked(hex"ef0100", policy)),
             "OWNER_NOT_DELEGATED_TO_CONFIGURED_POLICY"
         );
-        require(ProjectTestToken(token).allowance(owner, spender) == 6 ether, "EXPECTED_RESIDUAL_ALLOWANCE_NOT_FOUND");
+        require(
+            ProjectTestToken(token).allowance(owner, spender) == DEMO_ALLOWANCE - SPEND_AMOUNT,
+            "EXPECTED_RESIDUAL_ALLOWANCE_NOT_FOUND"
+        );
 
         vm.startBroadcast(ownerKey);
         vm.signAndAttachDelegation(address(0), ownerKey);

@@ -21,7 +21,10 @@ contract SpendResidualAllowanceSepolia is SepoliaScriptBase {
         vm.startBroadcast(spenderKey);
         ProjectTestToken(token).transferFrom(owner, spender, SPEND_AMOUNT);
         vm.stopBroadcast();
-        require(ProjectTestToken(token).allowance(owner, spender) == 6 ether, "RESIDUAL_ALLOWANCE_MISMATCH");
+        require(
+            ProjectTestToken(token).allowance(owner, spender) == DEMO_ALLOWANCE - SPEND_AMOUNT,
+            "RESIDUAL_ALLOWANCE_MISMATCH"
+        );
         require(ProjectTestToken(token).balanceOf(spender) == SPEND_AMOUNT, "SPENDER_BALANCE_MISMATCH");
     }
 }
